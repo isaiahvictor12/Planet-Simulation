@@ -2,11 +2,19 @@ import pygame
 from Planet import Planet
 import settings 
 import math
+import button
 
 pygame.init()
 
 WIN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 pygame.display.set_caption("Planet Simulation");
+
+start_img = pygame.image.load('images/start.png').convert_alpha()
+stop_img = pygame.image.load('images/stop.png').convert_alpha()
+
+
+start_button = button.Button(100, 600, start_img, 1)
+stop_button = button.Button(300, 600, stop_img, 1)
 
 def main():
     run = True
@@ -41,19 +49,30 @@ def main():
 
     planets = [sun, earth, mars, mercury, venus, jupiter, saturn, uranus, neptune]
 
+    pause = 0
     while run:
-        #clock.tick(60)
-        WIN.fill((0, 0, 0))
-        # WIN.fill(WHITE)
-        # pygame.display.update()
+        clock.tick(60)
+        if start_button.draw(WIN):
+            pause = 0
+            print('start pressed')
+            
+        if stop_button.draw(WIN):
+            pause = 1
+            print('stop pressed')
+        
+        if not pause: WIN.fill((0, 0, 0))
+    
+        start_button.draw(WIN)
+        stop_button.draw(WIN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
     
-        for planet in planets:
-            planet.update_position(planets)
-            planet.draw(WIN)
+        if not pause:
+            for planet in planets:
+                planet.update_position(planets)
+                planet.draw(WIN)
 
 
         pygame.display.update()
