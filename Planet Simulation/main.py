@@ -52,28 +52,23 @@ def main():
     pause = 0
     while run:
         clock.tick(60)
+        
         if start_button.draw(WIN):
-            pause = 0
-            print('start pressed')
-            
+            pause = 0    
         if stop_button.draw(WIN):
             pause = 1
-            print('stop pressed')
-        
-        if not pause: WIN.fill((0, 0, 0))
-    
-        start_button.draw(WIN)
-        stop_button.draw(WIN)
+
+        if not pause:
+            WIN.fill((0, 0, 0))
+            for planet in planets:
+                planet.update_position(planets)
+                planet.draw(WIN)
+            start_button.draw(WIN)
+            stop_button.draw(WIN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-    
-        if not pause:
-            for planet in planets:
-                planet.update_position(planets)
-                planet.draw(WIN)
-
 
         pygame.display.update()
 

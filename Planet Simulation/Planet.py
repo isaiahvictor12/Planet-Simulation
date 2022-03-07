@@ -5,8 +5,8 @@ import settings
 class Planet:
     AU = 149.6e6 * 1000
     G = 6.67428e-11
-    SCALE = 12/AU #250 / AU # 1 AU = 100 pixels
-    TIMESTEP = 3600*24*7 # 1 day
+    SCALE = 250/AU #250 / AU # 1 AU = 100 pixels
+    TIMESTEP = 3600*24 # 1 day
     def __init__(self, x, y, radius, color, mass, name) -> None:
         self.x = x
         self.y = y
