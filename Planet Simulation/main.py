@@ -9,12 +9,12 @@ pygame.init()
 WIN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 pygame.display.set_caption("Planet Simulation");
 
-start_img = pygame.image.load('images/start.png').convert_alpha()
-stop_img = pygame.image.load('images/stop.png').convert_alpha()
+start_img = pygame.image.load('Planet Simulation/images/start.png').convert_alpha()
+stop_img = pygame.image.load('Planet Simulation/images/stop.png').convert_alpha()
 
 
-start_button = button.Button(100, 600, start_img, 1)
-stop_button = button.Button(300, 600, stop_img, 1)
+start_button = button.Button(20, 680, start_img, 1)
+stop_button = button.Button(140, 680, stop_img, 1)
 
 def main():
     run = True

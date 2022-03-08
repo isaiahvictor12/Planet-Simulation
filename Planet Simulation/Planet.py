@@ -42,7 +42,7 @@ class Planet:
         if not self.sun:
             #distance_text = settings.pygame.font.SysFont("comicsans", 16).render(f"{round(self.distance_to_sun/1000, 1)}km", 1, settings.WHITE)
             name_text = settings.pygame.font.SysFont("comicsans", 16).render(self.name, 1, settings.WHITE)
-            win.blit(name_text, (x - name_text.get_width()/2, y - name_text.get_height()/2 + 25))
+            win.blit(name_text, (x - name_text.get_width()/2, y - name_text.get_height()/2))
 
     def attraction(self, other):
         other_x, other_y = other.x, other.y
